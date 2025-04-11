@@ -32,7 +32,7 @@ jobs:
         run: sourceanalyzer -b WebGoat -clean
 
       - name: 執行 Translation
-        run: sourceanalyzer -b WebGoat  -debug-verbose -logfile trans_java_21.log -jdk 21
+        run: sourceanalyzer -b WebGoat src/main/**/*.java -debug-verbose -logfile trans_java_21.log -jdk 21
 
       - name: 執行 Scan
         run: sourceanalyzer -b WebGoat -scan -debug-verbose -f WebGoat.fpr 
