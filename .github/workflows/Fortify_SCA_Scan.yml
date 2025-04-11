@@ -25,8 +25,11 @@ jobs:
       # 在 $GITHUB_WORKSPACE 下簽出您的存儲庫，以便您的工作可以訪問它
       - uses: actions/checkout@v2
 
-      - name: 檢查 SCA 版本
+      - name: 顯示 SCA 版本
         run: sourceanalyzer -version
+
+      - name: 顯示 Rulepacks 版本
+        run: fortifyupdate -showInstalledRules
 
       - name: 執行 Clean
         run: sourceanalyzer -b WebGoat -clean
@@ -34,10 +37,10 @@ jobs:
       - name: 執行 Translation
       # 將 *.java 改成 *.*
         # run: sourceanalyzer -b WebGoat src/main/**/*.java -debug-verbose -logfile trans_java_21.log -jdk 21
-        run: sourceanalyzer -b WebGoat -machine-output src/main -debug-verbose -logfile trans_java_21.log -jdk 21
+        run: sourceanalyzer -b WebGoat src/main -debug-verbose -logfile trans.log -jdk 21
 
       - name: 執行 Scan
-        run: sourceanalyzer -b WebGoat -scan -debug-verbose -f WebGoat.fpr 
+        run: sourceanalyzer -b WebGoat -scan -debug-verbose -logfile scan.log -f WebGoat.fpr 
 
       - name: 上傳至 SSC
         # 將 SSC URL 與 TOKEN 放到 SECRETS
