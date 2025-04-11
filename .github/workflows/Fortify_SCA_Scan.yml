@@ -32,6 +32,7 @@ jobs:
         run: sourceanalyzer -b WebGoat -clean
 
       - name: 執行 Translation
+      # 將 *.java 改成 *.*
         # run: sourceanalyzer -b WebGoat src/main/**/*.java -debug-verbose -logfile trans_java_21.log -jdk 21
         run: sourceanalyzer -b WebGoat src/main/**/*.* -debug-verbose -logfile trans_java_21.log -jdk 21
 
