@@ -34,7 +34,7 @@ jobs:
       - name: 執行 Translation
       # 將 *.java 改成 *.*
         # run: sourceanalyzer -b WebGoat src/main/**/*.java -debug-verbose -logfile trans_java_21.log -jdk 21
-        run: sourceanalyzer -b WebGoat src/main/**/*.* -debug-verbose -logfile trans_java_21.log -jdk 21
+        run: sourceanalyzer -b WebGoat -machine-output src/main -debug-verbose -logfile trans_java_21.log -jdk 21
 
       - name: 執行 Scan
         run: sourceanalyzer -b WebGoat -scan -debug-verbose -f WebGoat.fpr 
